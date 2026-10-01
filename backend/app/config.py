@@ -31,6 +31,14 @@ class Settings(BaseSettings):
     ALLOWED_EXTENSIONS: List[str] = [".pdf", ".txt", ".md"]
     UPLOAD_DIR: str = "./uploads"
     
+    # Email & Admin Notifications
+    ADMIN_NOTIFICATION_EMAIL: str = Field(default="", env="ADMIN_NOTIFICATION_EMAIL")
+    SMTP_SERVER: str = Field(default="smtp.gmail.com", env="SMTP_SERVER")
+    SMTP_PORT: int = Field(default=587, env="SMTP_PORT")
+    SMTP_USERNAME: str = Field(default="", env="SMTP_USERNAME")
+    SMTP_PASSWORD: str = Field(default="", env="SMTP_PASSWORD")
+    SEND_REGISTRATION_EMAILS: bool = Field(default=True, env="SEND_REGISTRATION_EMAILS")
+    
     # CORS
     CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173", "*"]
 

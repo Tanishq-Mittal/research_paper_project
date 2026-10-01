@@ -3,9 +3,11 @@ services:
     name: scholarpulse-backend
     env: python
     rootDir: backend
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
+      - key: PYTHONPATH
+        value: .
       - key: SECRET_KEY
         generateValue: true
       - key: DATABASE_URL

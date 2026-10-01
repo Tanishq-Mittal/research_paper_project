@@ -1,6 +1,6 @@
 import uuid
 import datetime
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from app.database.session import get_db
@@ -8,11 +8,16 @@ from app.database.models import User
 from app.schemas.schemas import UserCreate, UserLogin, UserResponse, UserUpdate, TokenResponse
 from app.security.tokens import get_password_hash, verify_password, create_access_token
 from app.security.auth import get_current_user
+from app.services.email_service import send_admin_registration_alert, send_user_welcome_email
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 @router.post("/register", response_model=TokenResponse)
-async def register(user_in: UserCreate, db: AsyncSession = Depends(get_db)):
+async def register(
+    user_in: UserCreate, 
+    background_tasks: BackgroundTasks,
+    db: AsyncSession = Depends(get_db)
+):
     stmt = select(User).where(User.email == user_in.email)
     res = await db.execute(stmt)
     if res.scalar_one_or_none():
@@ -33,6 +38,20 @@ async def register(user_in: UserCreate, db: AsyncSession = Depends(get_db)):
     db.add(user)
     await db.commit()
     await db.refresh(user)
+
+    # Trigger async background email alerts
+    background_tasks.add_task(
+        send_admin_registration_alert,
+        user.full_name,
+        user.email,
+        user.role,
+        user.research_interests
+    )
+    background_tasks.add_task(
+        send_user_welcome_email,
+        user.full_name,
+        user.email
+    )
 
     token = create_access_token(subject=user.id)
     return TokenResponse(access_token=token, token_type="bearer", user=user)
