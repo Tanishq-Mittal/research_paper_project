@@ -25,10 +25,18 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, isRegister = fal
     try {
       if (isRegister) {
         await register({ email, password, full_name: fullName, role, research_interests: interests });
-        addToast({ type: 'success', title: 'Account created successfully!' });
+        addToast({ 
+          type: 'success', 
+          title: `Account Created for ${fullName}!`, 
+          description: `Logged in as ${email} (${role})` 
+        });
       } else {
         await login(email, password);
-        addToast({ type: 'success', title: 'Welcome back to ScholarPulse' });
+        addToast({ 
+          type: 'success', 
+          title: 'Welcome back to ScholarPulse',
+          description: `Authenticated as ${email}`
+        });
       }
       onNavigate('dashboard');
     } catch (err: any) {
