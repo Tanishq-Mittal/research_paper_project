@@ -26,11 +26,16 @@ from app.api.admin import router as admin_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: initialize tables and seed data
-    await init_db()
-    async with AsyncSessionLocal() as session:
-        await seed_initial_data(session)
+    try:
+        await init_db()
+        async with AsyncSessionLocal() as session:
+            await seed_initial_data(session)
+        print("Database initialized and demo data seeded successfully!")
+    except Exception as e:
+        print(f"Startup notice: Database init/seed: {e}")
     yield
     # Shutdown
+
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
