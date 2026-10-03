@@ -4,7 +4,7 @@ from pydantic import BaseModel, EmailStr, Field
 
 # --- Auth & User ---
 class UserCreate(BaseModel):
-    email: EmailStr
+    email: str
     password: str
     full_name: str
     role: Optional[str] = "Student Researcher"
@@ -12,8 +12,9 @@ class UserCreate(BaseModel):
     preferred_citation_style: Optional[str] = "APA"
 
 class UserLogin(BaseModel):
-    email: EmailStr
+    email: str
     password: str
+
 
 class UserUpdate(BaseModel):
     full_name: Optional[str] = None
