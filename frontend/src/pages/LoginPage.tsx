@@ -112,7 +112,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, isRegister = fal
             <div className="relative">
               <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
               <input
-                type="email"
+                type="text"
                 required
                 placeholder="researcher@university.edu"
                 value={email}
