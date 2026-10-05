@@ -61,8 +61,9 @@ export const SettingsPage: React.FC = () => {
               <option value="Grounded Local Deterministic">Local Grounded NLP Engine (Zero External API Key Required)</option>
             </select>
             <p className="text-[11px] text-slate-500">
-              When external API keys are not supplied in <code className="text-brand-400 font-mono">.env</code>, ScholarPulse automatically utilizes its deterministic academic extraction engine with zero broken functionality.
+              When external API keys are not supplied in <code className="text-brand-400 font-mono">.env</code>, LitNexa automatically utilizes its deterministic academic extraction engine with zero broken functionality.
             </p>
+
           </div>
         </div>
 

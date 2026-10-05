@@ -86,7 +86,8 @@ export const PipelineExplainer: React.FC = () => {
         <div className="text-xs">
           <p className="font-semibold text-slate-200">Strict Academic Integrity & Zero-Hallucination Invariant</p>
           <p className="text-slate-400 mt-0.5 text-[11px] leading-relaxed">
-            Unlike generic LLM chat wrappers, questions answered by ScholarPulse cite exact <b>Page Numbers</b> and <b>Section Titles</b>. If evidence is absent in the uploaded PDF, the system explicitly reports insufficient evidence rather than fabricating facts.
+            Unlike generic LLM chat wrappers, questions answered by LitNexa cite exact <b>Page Numbers</b> and <b>Section Titles</b>. If evidence is absent in the uploaded PDF, the system explicitly reports insufficient evidence rather than fabricating facts.
+
           </p>
         </div>
       </div>

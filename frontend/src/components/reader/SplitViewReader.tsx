@@ -411,8 +411,9 @@ export const SplitViewReader: React.FC<SplitViewReaderProps> = ({ paper, onBack 
                       }`}
                     >
                       <p className="font-semibold text-[11px] mb-1 text-slate-400">
-                        {m.role === 'user' ? 'You' : 'ScholarPulse Grounded AI'}
+                        {m.role === 'user' ? 'You' : 'LitNexa Grounded AI'}
                       </p>
+
                       <p className="whitespace-pre-wrap">{m.content}</p>
 
                       {/* Evidence Citations Badge */}

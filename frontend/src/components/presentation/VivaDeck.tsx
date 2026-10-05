@@ -25,7 +25,8 @@ export const VivaDeck: React.FC = () => {
               </ul>
             </div>
             <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300">
-              <h4 className="font-bold text-emerald-400 text-sm mb-1.5">Our Proposed Solution: ScholarPulse</h4>
+              <h4 className="font-bold text-emerald-400 text-sm mb-1.5">Our Proposed Solution: LitNexa</h4>
+
               <ul className="space-y-1.5 list-disc pl-4 text-slate-300">
                 <li>End-to-end RAG system with verifiable page/section citation grounding.</li>
                 <li>Automated 10-category research gap finder and multi-paper comparative matrix.</li>

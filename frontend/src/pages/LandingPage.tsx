@@ -59,7 +59,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           <div className="w-8 h-8 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
             <BookOpen className="w-4 h-4" />
           </div>
-          <span className="font-heading font-bold text-lg text-slate-100">Scholar<span className="text-brand-400">Pulse</span></span>
+          <span className="font-heading font-bold text-lg text-slate-100">Lit<span className="text-brand-400">Nexa</span></span>
+
         </div>
 
         <div className="flex items-center gap-3">
