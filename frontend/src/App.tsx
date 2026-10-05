@@ -35,6 +35,11 @@ export const App: React.FC = () => {
   const { setActivePaper } = useWorkspace();
   const [currentPage, setCurrentPage] = useState<string>('landing');
 
+  const isAdmin = user?.email?.toLowerCase().includes('tanishq') || 
+                  user?.email?.toLowerCase().includes('admin') || 
+                  user?.role?.toLowerCase().includes('admin');
+
+
   // Handle navigation
   const handleNavigate = (page: string) => {
     setCurrentPage(page);
@@ -135,9 +140,10 @@ export const App: React.FC = () => {
           {currentPage === 'profile' && (
             <ProfilePage />
           )}
-          {currentPage === 'admin' && (
+          {currentPage === 'admin' && isAdmin && (
             <AdminDashboardPage />
           )}
+
           {currentPage === 'presentation' && (
             <VivaPresentationPage onBack={() => handleNavigate('dashboard')} />
           )}

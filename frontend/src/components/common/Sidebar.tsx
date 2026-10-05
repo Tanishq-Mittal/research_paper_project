@@ -5,6 +5,7 @@ import {
   BarChart3, Settings, ShieldCheck, HelpCircle, ArrowRight
 } from 'lucide-react';
 import { useWorkspace } from '../../contexts/WorkspaceContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface SidebarProps {
   currentPage: string;
@@ -26,6 +27,11 @@ interface NavGroup {
 
 export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => {
   const { selectedPaperIds } = useWorkspace();
+  const { user } = useAuth();
+
+  const isAdmin = user?.email?.toLowerCase().includes('tanishq') || 
+                  user?.email?.toLowerCase().includes('admin') || 
+                  user?.role?.toLowerCase().includes('admin');
 
   const navGroups: NavGroup[] = [
     {
@@ -59,7 +65,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
       title: "Settings & System",
       items: [
         { id: 'presentation', label: 'Viva Presentation', icon: HelpCircle, highlight: true },
-        { id: 'admin', label: 'Admin Telemetry', icon: ShieldCheck },
+        ...(isAdmin ? [{ id: 'admin', label: 'Admin Telemetry', icon: ShieldCheck }] : []),
         { id: 'settings', label: 'Settings', icon: Settings },
       ]
     }
