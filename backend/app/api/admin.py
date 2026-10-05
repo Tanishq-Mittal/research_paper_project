@@ -41,3 +41,26 @@ async def get_admin_stats(db: AsyncSession = Depends(get_db)):
         "system_health": "Healthy",
         "top_searched_topics": ["Self-Attention", "LoRA PEFT", "Residual CNNs", "Long Context", "Graph Networks"]
     }
+
+@router.get("/users")
+async def get_admin_users(db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(User).order_by(User.created_at.desc()))
+    users = result.scalars().all()
+    
+    user_list = []
+    for u in users:
+        p_count_res = await db.execute(select(func.count(Paper.id)).where(Paper.user_id == u.id))
+        paper_count = p_count_res.scalar() or 0
+        
+        user_list.append({
+            "id": u.id,
+            "full_name": u.full_name,
+            "email": u.email,
+            "role": u.role,
+            "research_interests": u.research_interests,
+            "preferred_citation_style": u.preferred_citation_style,
+            "papers_uploaded": paper_count,
+            "registered_at": u.created_at.strftime("%Y-%m-%d %H:%M:%S") if u.created_at else "N/A"
+        })
+    return {"users": user_list, "count": len(user_list)}
+

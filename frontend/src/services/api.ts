@@ -323,6 +323,14 @@ export const api = {
     return handleResponse(res);
   },
 
+  async getAdminUsers(): Promise<any> {
+    const res = await fetch(`${API_BASE}/admin/users`, {
+      headers: { ...getAuthHeader() }
+    });
+    return handleResponse(res);
+  },
+
+
   // --- Export Download ---
   async exportDocument(title: string, content: string, format: 'pdf' | 'docx' | 'md' | 'txt', metadata?: Record<string, any>) {
     const res = await fetch(`${API_BASE}/export/download`, {
