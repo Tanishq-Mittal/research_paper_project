@@ -4,8 +4,9 @@ from pydantic_settings import BaseSettings
 from pydantic import Field
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "ScholarPulse — AI Research Digest & Literature Assistant"
+    PROJECT_NAME: str = "LitNexa — AI Research Digest & Literature Assistant"
     API_V1_STR: str = "/api/v1"
+
     
     # Security
     SECRET_KEY: str = Field(default="scholarpulse-super-secret-jwt-key-change-in-production-2026", env="SECRET_KEY")

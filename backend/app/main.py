@@ -90,7 +90,7 @@ app.include_router(admin_router, prefix=api_v1)
 async def health_check():
     return {
         "status": "online",
-        "service": "ScholarPulse AI Platform",
+        "service": "LitNexa AI Platform",
         "version": "1.0.0",
         "vector_engine": "Chroma / TF-IDF Semantic Hybrid"
     }
@@ -98,7 +98,8 @@ async def health_check():
 @app.get("/")
 async def root_info():
     return {
-        "message": "Welcome to ScholarPulse API — Research Paper Digest & Literature Assistant",
+        "message": "Welcome to LitNexa API — Research Paper Digest & Literature Assistant",
         "documentation": "/docs",
         "status": "ready"
     }
+

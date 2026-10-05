@@ -28,9 +28,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-heading font-bold text-lg text-slate-100 tracking-tight">Scholar<span className="text-brand-400">Pulse</span></span>
+              <span className="font-heading font-bold text-lg text-slate-100 tracking-tight">Lit<span className="text-brand-400">Nexa</span></span>
               <span className="text-[10px] font-semibold uppercase tracking-wider bg-brand-500/20 text-brand-300 border border-brand-500/30 px-1.5 py-0.5 rounded">AI RAG</span>
             </div>
+
             <p className="text-[11px] text-slate-400 hidden sm:block">Literature & Synthesis Assistant</p>
           </div>
         </button>

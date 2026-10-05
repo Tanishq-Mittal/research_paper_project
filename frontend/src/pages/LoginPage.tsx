@@ -34,7 +34,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, isRegister = fal
         await login(email, password);
         addToast({ 
           type: 'success', 
-          title: 'Welcome back to ScholarPulse',
+          title: 'Welcome back to LitNexa',
           description: `Authenticated as ${email}`
         });
       }
@@ -68,10 +68,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, isRegister = fal
             <BookOpen className="w-6 h-6" />
           </div>
           <h2 className="text-xl font-bold font-heading text-slate-100">
-            {isRegister ? 'Create ScholarPulse Account' : 'Sign in to ScholarPulse'}
+            {isRegister ? 'Create LitNexa Account' : 'Sign in to LitNexa'}
           </h2>
           <p className="text-xs text-slate-400">AI-Powered Research Paper Digest & Literature Workspace</p>
         </div>
+
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
@@ -158,11 +159,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, isRegister = fal
             </p>
           ) : (
             <p>
-              New to ScholarPulse?{' '}
+              New to LitNexa?{' '}
               <button onClick={() => onNavigate('register')} className="text-brand-400 font-bold hover:underline">
                 Create Account
               </button>
             </p>
+
           )}
         </div>
       </div>

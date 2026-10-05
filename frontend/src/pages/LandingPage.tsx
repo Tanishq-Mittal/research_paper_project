@@ -183,9 +183,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
 
       {/* Footer */}
       <footer className="border-t border-slate-800 bg-slate-950 py-8 px-6 text-center text-xs text-slate-500">
-        <p>ScholarPulse &copy; 2026. Production-Style Research Paper Digest & Literature Assistant.</p>
+        <p>LitNexa &copy; 2026. Production-Style Research Paper Digest & Literature Assistant.</p>
         <p className="text-[11px] text-slate-600 mt-1">Built with FastAPI, PyMuPDF, Sentence Transformers, React & TypeScript.</p>
       </footer>
+
     </div>
   );
 };
